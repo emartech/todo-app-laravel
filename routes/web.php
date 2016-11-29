@@ -1,5 +1,7 @@
 <?php
 
+use App\models\Item;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +14,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'todos' => Item::all()
+    ]);
 });
