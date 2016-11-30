@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\models\Item;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class ItemController extends Controller
 {
@@ -37,6 +36,7 @@ class ItemController extends Controller
     {
         Item::create(['title' => $request->title]);
         return response(json_encode(['success' => true]));
+//        return new Response(json_encode(['success' => true]));
     }
 
     /**

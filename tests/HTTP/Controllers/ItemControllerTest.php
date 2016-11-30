@@ -5,18 +5,25 @@ use App\Http\Controllers\ItemController;
 
 class ItemControllerTest extends PHPUnit_Framework_TestCase
 {
+    protected $subject, $request, $mock;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->subject = new ItemController();
+        $this->request = new \Illuminate\Http\Request();
+    }
+
     /**
      * @test
      */
     public function testStore()
     {
-        $subject = new ItemController();
-        $request = new \Illuminate\Http\Request();
-        $request->title = 'test data';
+        $this->request->title = 'test data';
 
-        $itemMock = $this->createMock('App\models\Item');
-        $itemMock->expects($this->once())->method('create')->with(['title' => 'test data']);
+        $mock = \Mockery::mock('alias:App\models\Item');
+        $mock->shouldReceive('create')->with(['title' => 'test data']);
 
-        $subject->store($request);
+        $this->subject->store($this->request);
     }
 }
