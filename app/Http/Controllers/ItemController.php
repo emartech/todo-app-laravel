@@ -36,7 +36,6 @@ class ItemController extends Controller
     {
         Item::create(['title' => $request->title]);
         return response(json_encode(['success' => true]));
-//        return new Response(json_encode(['success' => true]));
     }
 
     /**

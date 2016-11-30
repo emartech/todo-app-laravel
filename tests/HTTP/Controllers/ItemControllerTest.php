@@ -3,9 +3,14 @@
 use App\Http\Controllers\ItemController;
 
 
-class ItemControllerTest extends PHPUnit_Framework_TestCase
+class ItemControllerTest extends TestCase
 {
-    protected $subject, $request, $mock;
+    /** @var  ItemController */
+    protected $subject;
+    /** @var  \Illuminate\Http\Request */
+    protected $request;
+
+
 
     public function setUp()
     {
@@ -13,6 +18,8 @@ class ItemControllerTest extends PHPUnit_Framework_TestCase
         $this->subject = new ItemController();
         $this->request = new \Illuminate\Http\Request();
     }
+
+
 
     /**
      * @test
@@ -24,6 +31,9 @@ class ItemControllerTest extends PHPUnit_Framework_TestCase
         $mock = \Mockery::mock('alias:App\models\Item');
         $mock->shouldReceive('create')->with(['title' => 'test data']);
 
-        $this->subject->store($this->request);
+        $this->response = $this->subject->store($this->request);
+
+        $this->assertResponseOk();
+        $this->seeJsonEquals(['success' => true]);
     }
 }
