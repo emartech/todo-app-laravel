@@ -34,21 +34,23 @@
         <h2>Add todo:</h2>
         <form action="/api/item" method="post">
             <input type="text" name="title">
-            <input type="submit" value="Add">
+            <input type="submit" name="add" value="Add">
         </form>
 
         <h2>My todos (<?= count($todos) ?>):</h2>
-        <ul>
+        <ul id="todo-list">
             <?php foreach($todos as $todo): ?>
                 <li>
-                    <form action="/api/items">
+                    <form action="/api/item" method="get">
                         <input type="hidden" name="id" value="<?= $todo->id ?>">
                         <input type="checkbox" name="is_completed">
                         <span><?= $todo->title ?></span>
-                        <input type="submit" value="Remove">
+                        <input type="button" name="delete" value="Remove">
                     </form>
                 </li>
             <?endforeach; ?>
         </ul>
+
+        <script src="/js/app.js"></script>
     </body>
 </html>
