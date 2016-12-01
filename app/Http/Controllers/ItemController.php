@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreItem;
 use App\models\Item;
 use Illuminate\Http\Request;
+use Validator;
 
 class ItemController extends Controller
 {
@@ -29,10 +31,10 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StoreItem  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreItem $request)
     {
         Item::create(['title' => $request->title]);
         return response(json_encode(['success' => true]));

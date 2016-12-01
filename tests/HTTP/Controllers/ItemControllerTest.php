@@ -16,7 +16,6 @@ class ItemControllerTest extends TestCase
     {
         parent::setUp();
         $this->subject = new ItemController();
-        $this->request = new \Illuminate\Http\Request();
     }
 
 
@@ -26,6 +25,7 @@ class ItemControllerTest extends TestCase
      */
     public function testStore()
     {
+        $this->request = new App\Http\Requests\StoreItem();
         $this->request->title = 'test data';
 
         $mock = \Mockery::mock('alias:App\models\Item');
