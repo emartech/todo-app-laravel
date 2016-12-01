@@ -24,11 +24,10 @@ const todoRemoveHandler = event => {
 
     const button = event.target;
     const form = button.parentNode;
-    const listItem = button.parentNode.parentNode;
     const todoItemId = form.querySelector('[name=id]').value;
 
     fetch(`/api/item/${todoItemId}`, { method: 'DELETE' })
-        .then(response => {
+        .then(() => {
             location.reload();
         })
         .catch(error => console.log(error));
@@ -37,7 +36,8 @@ const todoRemoveHandler = event => {
 const todoCompletionHandler = event => {
     const todoItemId = event.target.parentNode.querySelector('[name=id]').value;
 
-    fetch(`/api/item${todoItemId}`, { method: 'PUT' })
+    fetch(`/api/item/${todoItemId}`, { method: 'PUT' })
+        .then(response => response.json())
         .then(response => {
             console.log(response);
         })

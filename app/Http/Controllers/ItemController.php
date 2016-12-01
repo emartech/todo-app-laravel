@@ -70,7 +70,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return response(json_encode(['error' => 'No PUT defined']), 404);
     }
 
     /**
