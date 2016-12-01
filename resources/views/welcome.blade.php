@@ -32,7 +32,7 @@
     </head>
     <body>
         <h2>Add todo:</h2>
-        <form action="/api/items" method="post">
+        <form action="/api/item" method="post">
             <input type="text" name="title">
             <input type="submit" value="Add">
         </form>
