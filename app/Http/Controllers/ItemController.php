@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreItem;
 use App\models\Item;
 use Illuminate\Http\Request;
-use Validator;
 
 class ItemController extends Controller
 {
